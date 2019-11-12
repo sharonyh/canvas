@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="jquery-3.4.1.min.js"></script>
+<title>Drawing Area</title>
+<!-- You can add your style here rather than in an external style sheet. -->
+<style>
+	canvas {
+	    border:5px solid #d3d3d3;
+	    background-color: #f1f1f1;
+	    display: block;
+	}
+</style>
+</head>
+<body>
+    <!-- DO NOT MODIFY THIS HTML -->
+    <canvas id = "myCanvas" width = "350" height = "500"  ></canvas>
+    <input type = "color" id = "picker"/>
+</body>
+
+<script>
+	// $("#myCanvas").width("80%");
+	// $("#myCanvas").height("80%");
+
+	var myCanvas = document.getElementById('myCanvas');
+	var ctx = myCanvas.getContext('2d');
+	var paint = true;
+	var color = 'blue';
+	var p = document.getElementById('picker');
+	var x;
+	var y;
+
+	myCanvas.width = window.innerWidth * 0.8;
+	myCanvas.height = window.innerHeight * 0.8;
+
+
+	// var circle = {
+	// 	radius: 10,
+	// 	draw: function() {
+	// 		ctx.beginPath();
+	// 		ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+	// 		// ctx.closePath();
+	// 		ctx.fillStyle = color;
+	// 		ctx.fill();
+	// 	}
+	// };
+
+	function clear() {
+	ctx.fillStyle = '#f1f1f1';
+	ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+	}
+
+	function draw() {
+		// ctx.fillStyle = color;
+		if(paint){
+			ctx.beginPath();
+			ctx.arc(x, y, 10, 0, Math.PI*2);
+			// ctx.closePath();
+			ctx.fillStyle = color;
+			ctx.fill();
+		}
+	}
+
+	myCanvas.addEventListener('mousemove', function(e) {
+		// console.log(e);
+		x = e.pageX;
+		// console.log(x);
+		y = e.pageY;
+		// console.log(y);
+		draw();
+	});
+
+	window.addEventListener('keydown', function(e){
+		// console.log(e);
+		var key = e.keyCode;
+		if (key == 32){
+			clear();
+		}
+		if (key==66){
+			color = 'blue';
+			console.log(color);
+		}
+		if (key==82){
+			color = 'red';
+			console.log(color);
+		}
+		if (key==89){
+			color = 'yellow';
+		}
+		if (key==71){
+			color = 'green';
+		}
+		if (key == 38){
+			paint = false;
+		}
+		if (key == 40){
+			paint = true;
+		}
+	});
+
+	picker.addEventListener('input', function(){
+		color = p.value;
+	});
+
+
+
+
+	
+</script>
+
+
+
+
+
+</html>
