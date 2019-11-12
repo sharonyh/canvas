@@ -21,8 +21,6 @@
 </body>
 
 <script>
-	// $("#myCanvas").width("80%");
-	// $("#myCanvas").height("80%");
 
 	var myCanvas = document.getElementById('myCanvas');
 	var ctx = myCanvas.getContext('2d');
@@ -35,17 +33,6 @@
 	myCanvas.width = window.innerWidth * 0.8;
 	myCanvas.height = window.innerHeight * 0.8;
 
-
-	// var circle = {
-	// 	radius: 10,
-	// 	draw: function() {
-	// 		ctx.beginPath();
-	// 		ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-	// 		// ctx.closePath();
-	// 		ctx.fillStyle = color;
-	// 		ctx.fill();
-	// 	}
-	// };
 
 	function clear() {
 	ctx.fillStyle = '#f1f1f1';
@@ -64,16 +51,13 @@
 	}
 
 	myCanvas.addEventListener('mousemove', function(e) {
-		// console.log(e);
 		x = e.pageX;
-		// console.log(x);
 		y = e.pageY;
-		// console.log(y);
 		draw();
 	});
 
 	window.addEventListener('keydown', function(e){
-		// console.log(e);
+
 		var key = e.keyCode;
 		if (key == 32){
 			clear();
